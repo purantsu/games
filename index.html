@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Search</title>
+    <style>
+        body {
+            background-color: #fff;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Search</h1>
+    <form action="https://boardgamegeek.com/search/boardgame">
+        <p>
+            <input type="hidden" name="q">
+            <input type="hidden" name="sort" value="rank">
+            <input type="hidden" name="advsearch" value="1">
+            <label for="numPlayers">Number of players:</label>
+            <input type="number" id="numPlayers" name="range[minplayers][max]" style="width: 40px;">
+            <input type="hidden" id="maxPlayers" name="range[maxplayers][min]">
+            
+            <script>
+                document.getElementById("numPlayers").addEventListener("input", function() {
+                  document.getElementById("maxPlayers").value = this.value;
+                });
+            </script>
+        </br>
+            <label for="minTime">From:</label>
+            <select id="minTime" name="range[leastplaytime][min]">
+                <option value="0">0 min</option>
+                <option value="15">15 min</option>
+                <option value="30">30 min</option>
+                <option value="60">1 hour</option>
+                <option value="120">2 hours</option>
+            </select>
+            <label for="maxTime">to:</label>
+            <select id="maxTime" name="range[playtime][max]">
+                <option value="15">15 min</option>
+                <option value="30">30 min</option>
+                <option value="60">1 hour</option>
+                <option value="120">2 hours</option>
+                <option value="180">3 hours</option>
+                <option value="240">4 hours</option>
+                <option value="720">>4 hours</option>
+              </select>
+            </br>
+              <label for="diffMin">Complexity:</label>
+              <select id="diffMin" name="floatrange[avgweight][min]">
+                <option value="1">Beginner (1.0)</option>
+                <option value="1.5">Easy (1.5)</option>
+                <option value="2">Medium (2.0)</option>
+                <option value="3">Hard (3.0)</option>
+                <option value="4">Expert (4.0)</option>
+                
+              </select>
+              <label for="diffMax">to</label>
+              <select id="diffMax" name="floatrange[avgweight][max]">
+                <option value="1.5">Easy (1.5)</option>
+                <option value="2">Medium (2.0)</option>
+                <option value="3">Hard (3.0)</option>
+                <option value="4">Expert (4.0)</option>
+                <option value="5">Genius (5.0)</option>
+              </select>
+              
+              <input type="hidden" name="colfiltertype" value="owned">
+              <input type="hidden" name="searchuser" value="Boardinthecity">
+              <input type="hidden" name="playerrangetype" value="normal">
+            </br>
+              <input type="checkbox" name="propertyids[]" value="2023"> Cooperative
+            </br>
+              <input type="checkbox" name="nopropertyids[]" value="2023"> Non-cooperative
+            </br>
+              <input type="checkbox" name="familyids[]" value="4665"> Children's Games
+            </br>
+              <input type="checkbox" name="familyids[]" value="5498"> Party Games
+              <input type="hidden" name="nosubtypes[]" value="boardgameexpansion">
+            
+        </p>
+        <p>
+            <input type="submit" value="Search">
+        </p>
+      
+        
+    </form>
+</body>
+</html>
